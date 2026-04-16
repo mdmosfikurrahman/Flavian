@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.7" />
+        <PackageReference Include="YamlDotNet" Version="13.3.1" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.4" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.7" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.7">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.7" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.7">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Flavian.Domain\Flavian.Domain.csproj" />
+        <ProjectReference Include="..\Flavian.Shared\Flavian.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="Database\Changelog.yaml">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        </None>
+        <None Include="Database\Db\**\*.sql">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        </None>
+    </ItemGroup>
+
+</Project>

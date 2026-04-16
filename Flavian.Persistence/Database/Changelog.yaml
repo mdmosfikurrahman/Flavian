@@ -1,0 +1,5 @@
+migrations:
+  - id: "001"
+    filename: "001_create_demo_table.sql"
+    description: "Create demo and demo_audit tables"
+    author: "Flavian"

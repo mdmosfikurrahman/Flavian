@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  flavian-api:
+    container_name: flavian-api-staging
+    image: flavian-api:staging
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BUILD_CONFIGURATION: Release
+
+    environment:
+      ASPNETCORE_ENVIRONMENT: Staging
+      ASPNETCORE_URLS: http://+:80
+
+    ports:
+      - "8080:80"
+
+    restart: unless-stopped
