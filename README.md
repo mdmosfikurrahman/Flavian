@@ -1,6 +1,24 @@
 # Flavian
 
+![.NET](https://img.shields.io/badge/.NET-9.0-512BD4?logo=dotnet&logoColor=white)
+![EF Core](https://img.shields.io/badge/EF%20Core-9.0-512BD4)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 A clean architecture foundation for building .NET 9.0 microservices. Production-grade infrastructure with zero business logic — clone, rename, and start building.
+
+## Why it exists
+
+Every .NET codebase I have been asked to rescue died the same way: business logic in controllers, one
+enormous `DbContext`, no transaction boundaries, and migrations nobody dares run. None of it looks
+like a problem in month one, and all of it is the problem by month nine.
+
+The fix is not clever code. It is deciding the boundaries before the first feature arrives — and then
+having something enforce them. That is all Flavian is: the skeleton, with the dependency direction
+enforced by project references rather than by good intentions, and the parts you would otherwise
+rewrite on every new service (DI wiring, repositories, validation, error shape, auth, migrations,
+audit) already built and working.
+
+It ships with **zero business logic** on purpose. There is nothing to delete before you start.
 
 ## Architecture
 
@@ -72,7 +90,7 @@ WebAPI → Configuration → Application → Persistence → Domain
 
 ```bash
 # Clone
-git clone git@github.com:mdmosfikurrahman/Flavian.git
+git clone https://github.com/mdmosfikurrahman/Flavian.git
 cd Flavian
 
 # Update connection string in appsettings.Development.json
@@ -128,6 +146,38 @@ Convention-based DI handles registration automatically — no manual wiring need
 | Migrations | Custom YAML + SQL |
 | Container | Docker |
 
+## Renaming it for your own service
+
+Flavian is meant to be used under a different name. Three steps:
+
+1. Rename the solution and the seven project folders — `Flavian.*` → `YourService.*`
+2. Find-and-replace the `Flavian` root namespace across the solution
+3. Delete the `Demo` vertical slice listed above once you have copied its shape for your first entity
+
+The convention-based DI resolves by namespace, so nothing else needs rewiring.
+
 ## License
 
-MIT
+MIT — use it commercially, no attribution required.
+
+## Who maintains this
+
+Built by **Md. Mosfikur Rahman** — backend engineer in Dhaka, Bangladesh (GMT+6), working in .NET and
+Java. Eight .NET 9 microservices in production, database per service, REST and gRPC; earlier, Spring
+Boot at national scale and a GraphQL backend-for-frontend for Rakuten. Alongside the engineering, ten
+peer-reviewed publications and 78 manuscripts reviewed for international journals.
+
+- Portfolio — https://mdmosfikurrahman.github.io
+- GitHub — https://github.com/mdmosfikurrahman
+- LinkedIn — https://linkedin.com/in/mdmosfikurrahman
+
+## Need this built for your project?
+
+If you would rather have the service than the skeleton, I take a small number of freelance projects
+at a time and build to exactly this standard:
+
+- **.NET 9 microservice, clean architecture** — https://www.fiverr.com/s/2pKpNEX
+- **Spring Boot REST API** — https://www.fiverr.com/s/YLRLA2a
+
+Questions about the structure itself are welcome in an issue — that part is free, and the answer is
+usually useful to someone else too.
